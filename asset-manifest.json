@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DSA-Checklist/static/css/main.6b8b3ea7.css",
+    "main.js": "/DSA-Checklist/static/js/main.8948c68b.js",
+    "index.html": "/DSA-Checklist/index.html",
+    "main.6b8b3ea7.css.map": "/DSA-Checklist/static/css/main.6b8b3ea7.css.map",
+    "main.8948c68b.js.map": "/DSA-Checklist/static/js/main.8948c68b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b8b3ea7.css",
+    "static/js/main.8948c68b.js"
+  ]
+}
