@@ -1,0 +1,75 @@
+.progressbar-container {
+    width: 100%;
+    background-color: #dddddd;
+    margin-bottom: 20px;
+    height: 28px;
+    border-radius: 15px;
+}
+
+.progressbar-container span{
+    position: relative;
+    top: 5px;
+}
+
+.progressbar-done{
+    max-width: 100%;
+    background-image: linear-gradient(to right, rgb(0, 255, 0) , rgba(78, 255, 78, 0.822));
+    margin-bottom: 20px;
+    height: 28px;
+    border-radius: 15px;
+    animation-duration: 1s ease-out;
+}
+
+.Questions-container {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+.table-wrapper {
+    height: 90vh;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+
+
+table tr {
+    height: 51px;
+}
+
+table tr:hover {
+    background-color: #ffe3e3;
+}
+
+#checkbox {
+    width: 15px;
+    height: 15px;
+}
+
+tbody td {
+    font-size: 19px;
+    border: 1px solid gray;
+}
+
+#tdproblem {
+    text-align: left;
+    padding-left: 14px;
+}
+
+#header-row {
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #ffe3e3;
+}
+
+
+tbody img {
+    width: 25px;
+    height: 25px;
+}

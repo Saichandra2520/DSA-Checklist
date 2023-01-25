@@ -1,0 +1,67 @@
+.sheets-container {
+    margin: auto;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 0.5px solid #c3bfbfe3;
+    padding: 25px;
+}
+
+.sheet-item {
+    box-sizing: border-box;
+    height: 185px;
+    margin-bottom: 24px;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    display: flex;
+
+}
+
+.sheet-item-primary {
+    width: 220px;
+}
+
+.progress-hover {
+    width: 100px;
+}
+
+.sheet-item:hover {
+    background-color: #ffe3e3;
+}
+
+.sheet-item h2 {
+    font-size: 22px;
+}
+
+.sheet-item h4 {
+    font-size: 16px;
+    margin: 0px;
+    color: #6c6666e3;
+}
+
+.sheet-item h5 {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.sheet-item-primary span {
+    font-size: 20px;
+}
+
+.sheet-item-primary button {
+    padding: 6px;
+    letter-spacing: 1px;
+    background: #595353;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+    margin-top: 7px;
+}
+
+.sheet-item button:hover {
+    background-color: #383434;
+}
