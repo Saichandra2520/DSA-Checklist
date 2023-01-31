@@ -7,7 +7,7 @@ const Footer = () => {
     <div>
         <footer className='footer'>
             <div className='footer-item'>
-                <a href='https://www.google.com/' target="_blank"><span>✨</span>This Project!</a>
+                <a href='https://github.com/Saichandra2520/DSA-Checklist' target="_blank"><span>✨</span>This Project!</a>
             </div>
             <div className='footer-item'>
                 <Link to='/about'>About<span>🙇</span></Link>
