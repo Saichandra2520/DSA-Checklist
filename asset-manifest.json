@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/DSA-Checklist/static/css/main.6b8b3ea7.css",
+    "main.css": "/DSA-Checklist/static/css/main.df57fe77.css",
     "main.js": "/DSA-Checklist/static/js/main.a616e88f.js",
     "index.html": "/DSA-Checklist/index.html",
-    "main.6b8b3ea7.css.map": "/DSA-Checklist/static/css/main.6b8b3ea7.css.map",
+    "main.df57fe77.css.map": "/DSA-Checklist/static/css/main.df57fe77.css.map",
     "main.a616e88f.js.map": "/DSA-Checklist/static/js/main.a616e88f.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b8b3ea7.css",
+    "static/css/main.df57fe77.css",
     "static/js/main.a616e88f.js"
   ]
 }
