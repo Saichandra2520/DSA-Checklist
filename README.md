@@ -21,3 +21,17 @@
 
    ```bash
    git clone https://github.com/Saichandra2520/DSA-Checklist.git
+## Contributing
+   Contributions are welcome! If you'd like to contribute to the project, please follow these steps
+
+   1. Fork the repository: Click on the "Fork" button on the top right of this page
+   2. Create a Branch: Create a new branch for your feature or bug fix.
+      git checkout -b your-branch-name
+   3. Make changes: Implement your feature or fix the bug.
+   4. Commit your changes
+      git add .
+      git commit -m "Description of your changes"
+   5. Push to your fork
+      git push origin your-branch-name
+   6. Create a Pull request: Open a pull request from your forked repository to the main repository
+
