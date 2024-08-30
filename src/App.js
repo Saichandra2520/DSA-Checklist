@@ -75,24 +75,6 @@ function totalquestions(data)
   return (
     <div className='main' id='DSAsheets'>
         <Header />
-        <div className="dsasheets-container">
-            
-            <Routes>
-              <Route path='/' element={<Sheetscontainer data1={lovebabarsheetData} data2={striversheetData}/>} />
-
-              {/* About Page */}
-              <Route path='/about' element={<About></About>} />
-
-              <Route path='/450lovebabartopics' element={ <Topics topics={lovebabarsheetData} topicChange={topicChange} title={'Love Babbar DSA Sheet'} />} />
-              <Route path='/striversheettopics' element={ <Topics topics={striversheetData} topicChange={topicChange} title={'Striver A2Z DSA Sheet'} />} />
-              <Route path='/450lovebabartopics/problems' element={ <TopicQuestions data={lovebabarsheetData[bro]} updateData={updateData} title={'Love Babbar DSA Sheet'} s={0} totalquestions={totalquestions}/>} />
-              <Route path='/striversheettopics/problems' element={ <TopicQuestions data={striversheetData[bro]} updateData={updateData} title={'Striver A2Z DSA Sheet'} s={1} totalquestions={totalquestions} />} />
-
-            </Routes>
-
-            
-        </div>
-        <Footer />
     </div>
   );
 }
