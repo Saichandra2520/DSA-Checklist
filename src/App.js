@@ -9,6 +9,10 @@ import { getData, updateDBData, resetDBData, exportDBData, importDBData } from '
 import TopicQuestions from './Components/TopicQuestions/TopicQuestions';
 import Footer from './Components/Footer/Footer';
 import About from './Components/About/About'
+import HomePage from './Pages/HomePage/HomePage';
+import SheetTopics from './Pages/SheetTopics/SheetTopics';
+import ProgressPage from './Pages/ProgressPage/ProgressPage';
+import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage';
 
 
 function App() {
@@ -74,24 +78,33 @@ function totalquestions(data)
 
   return (
     <div className='main' id='DSAsheets'>
-        <Header />
-        <div className="dsasheets-container">
+       <Header />
+       <Routes>
+        
+        <Route path='/' element={<HomePage />} />
+        <Route path='/:id/topics' element={<SheetTopics />} />
+        <Route path='/progress' element={<ProgressPage />} />
+        <Route path='/:id/topics/:id' element={<ProblemsSheetPage />} />
+        
+        
+        
+        </Routes>
+       
+        {/* <div className="dsasheets-container">
             
             <Routes>
-              <Route path='/' element={<Sheetscontainer data1={lovebabarsheetData} data2={striversheetData}/>} />
+              <Route path='/test' element={<Sheetscontainer data1={lovebabarsheetData} data2={striversheetData}/>} />
 
-              {/* About Page */}
-              <Route path='/about' element={<About></About>} />
+              
+              
 
               <Route path='/450lovebabartopics' element={ <Topics topics={lovebabarsheetData} topicChange={topicChange} title={'Love Babbar DSA Sheet'} />} />
               <Route path='/striversheettopics' element={ <Topics topics={striversheetData} topicChange={topicChange} title={'Striver A2Z DSA Sheet'} />} />
               <Route path='/450lovebabartopics/problems' element={ <TopicQuestions data={lovebabarsheetData[bro]} updateData={updateData} title={'Love Babbar DSA Sheet'} s={0} totalquestions={totalquestions}/>} />
               <Route path='/striversheettopics/problems' element={ <TopicQuestions data={striversheetData[bro]} updateData={updateData} title={'Striver A2Z DSA Sheet'} s={1} totalquestions={totalquestions} />} />
 
-            </Routes>
-
-            
-        </div>
+            </Routes>  
+        </div> */}
         <Footer />
     </div>
   );
