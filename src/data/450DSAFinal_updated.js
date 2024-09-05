@@ -1309,7 +1309,7 @@ export default {
       ],
     },
     {
-      topicName: "Linked List",
+      topicName: "LinkedList",
       position: 4,
       started: false,
       doneQuestions: 0,

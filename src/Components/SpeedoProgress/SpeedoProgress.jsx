@@ -6,6 +6,8 @@ const SpeedometerProgress = ({
   color,
   progressWidth,
   bgColor,
+  totQuestions,
+  totSolvedQuestions
 }) => {
   const strokeWidth = progressWidth ? progressWidth : 12; // Width of the progress stroke
   const normalizedRadius = radius - strokeWidth; // Adjust for stroke width
@@ -126,9 +128,9 @@ const SpeedometerProgress = ({
             <div class="text-sd-foreground pointer-events-none absolute left-1/2 top-[55%] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-0.5 text-sm transition-opacity duration-200 opacity-100 delay-200">
               <div>
                 <span class="text-[30px] font-semibold leading-[32px]">
-                  133
+                  {totSolvedQuestions}
                 </span>
-                <span>/3278</span>
+                <span>/{totQuestions}</span>
               </div>
               <div class="relative">
                 <div class="text-[12px] leading-[normal] p-[1px] before:block before:h-3 before:w-3 text-sd-success absolute right-[calc(100%+2px)] top-1/2 -translate-y-1/2">
@@ -155,7 +157,7 @@ const SpeedometerProgress = ({
           </div>
         </div>
       </div>
-      <div class="flex h-full w-[90px] flex-none flex-col gap-2">
+      {/* <div class="flex h-full w-[90px] flex-none flex-col gap-2">
         <div class="rounded-sd-sm flex w-full flex-1 flex-col items-center justify-center gap-0.5 shadow-[unset] bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.06)]">
           <div class="text-xs font-medium text-sd-easy text-[#00acc1]">Easy</div>
           <div class="text-sd-foreground text-xs font-medium">72/823</div>
@@ -168,7 +170,7 @@ const SpeedometerProgress = ({
           <div class="text-xs font-medium text-sd-hard text-[#e57373]">Hard</div>
           <div class="text-sd-foreground text-xs font-medium">9/740</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

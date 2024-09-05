@@ -3,7 +3,7 @@ import { getHeatmapData, initializeHeatmapData } from '../../Services/progress';
 
 const colors = {
   0: 'bg-gray-200',    // No activity
-  1: 'bg-green-100',   // Very low activity
+  1: 'bg-green-200',   // Very low activity
   2: 'bg-green-300',   // Low activity
   3: 'bg-green-500',   // Medium activity
   4: 'bg-green-600',   // High activity

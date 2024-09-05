@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { getTopicData } from '../../Services/service'
 
 
-const SheetTopics = ({ sheets,reload }) => {
+const SheetTopics = ({ sheets,reload,currentStreak,consistencyPoints }) => {
     const { sheetId } = useParams();
     const [sheet, setSheet] = useState({});
 
@@ -19,7 +19,7 @@ const SheetTopics = ({ sheets,reload }) => {
 
       },[reload]);
 
- console.log(sheet);
+ 
     //Percentage Calculation
     let percentage = sheet?.totalQuestions ? Math.floor((sheet.solvedQuestions / sheet.totalQuestions) * 100) : 0;
 
@@ -32,7 +32,6 @@ const SheetTopics = ({ sheets,reload }) => {
         loadData(sheets);
         
     },[sheetId,sheets])
-    console.log(sheet);
   return (
     <div className='flex justify-center items-center w-[75vw] flex-wrap m-auto' >
         <div className='flex gap-3 flex-wrap w-full m-auto justify-around' >
@@ -47,7 +46,7 @@ const SheetTopics = ({ sheets,reload }) => {
                 </div>
             </div>
             <div className=''>
-                <ConsistencyTracker />
+                <ConsistencyTracker currentStreak={currentStreak} consistencyPoints={consistencyPoints} />
             </div>
         </div>
         <div className='w-full mt-8' >

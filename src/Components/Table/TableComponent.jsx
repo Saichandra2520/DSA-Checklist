@@ -3,16 +3,16 @@ import confetti from 'canvas-confetti';
 import './styles.css'; // Ensure your CSS file is imported
 import { getTopicData, updateDBData } from '../../Services/service'; // Adjust the import path
 import { useParams } from 'react-router-dom';
-import { updateHeatmapData } from '../../Services/progress';
+import { getHeatmapData, initializeHeatmapData, updateHeatmapData } from '../../Services/progress';
 
-const TableComponent = ({ onChecklistChange, onHeatmapChange }) => {
+const TableComponent = ({ onChecklistChange }) => {
   const [sortOrder, setSortOrder] = useState('easy');
   const [celebrate, setCelebrate] = useState(false);
   const { topicId, sheetId } = useParams();
   const [sheet, setSheet] = useState();
   const [topic, setTopic] = useState();
   const [problemData, setProblemData] = useState();
-  const [heatmapData, setHeatmapData] = useState({}); // New heatmap state
+  const [heatmapData, setHeatmapData] = useState(); // New heatmap state
 
   // Utility function to get the current date as a string
   const getCurrentDate = () => {
@@ -20,14 +20,6 @@ const TableComponent = ({ onChecklistChange, onHeatmapChange }) => {
     return date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
   };
 
-  // Initialize heatmap state
-  useEffect(() => {
-    const today = getCurrentDate();
-    setHeatmapData((prevData) => ({
-      ...prevData,
-      [today]: prevData[today] || 0, // Initialize today's count if not present
-    }));
-  }, []);
 
   const topicfilter = (topic) => {
     return topicId === topic.topicName.toLowerCase().split(' ').join('');
@@ -40,6 +32,17 @@ const TableComponent = ({ onChecklistChange, onHeatmapChange }) => {
       setProblemData(data?.problems?.filter(topicfilter)[0].questions);
     });
   }, []);
+
+  // Fetch heatmap data from Localbase when component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      await initializeHeatmapData();
+      const data = await getHeatmapData();
+      setHeatmapData(data);
+    };
+    fetchData();
+  }, []);
+
 
   const getSortedProblems = () => {
     const difficultyOrder = {
@@ -97,17 +100,21 @@ const TableComponent = ({ onChecklistChange, onHeatmapChange }) => {
     updateDBData(sheetId, sheetId, updatedSheet);
     setProblemData(updatedQuestionsStatus);
     
+    
     // Update the heatmap based on the checkbox status
+    
     setHeatmapData((prevHeatmapData) => {
       const newHeatmapData = { ...prevHeatmapData };
       if (problem.Done) {
-        newHeatmapData[today] = (newHeatmapData[today] || 0) + 1; // Increment if Done
+        updateHeatmapData(today , true);
       } else {
-        newHeatmapData[today] = Math.max((newHeatmapData[today] || 1) - 1, 0); // Decrement if not Done
+        updateHeatmapData(today , false);
       }
-      updateHeatmapData(today , newHeatmapData[today]);
+      
       return newHeatmapData;
     });
+
+    onChecklistChange();
 
     // Trigger celebration animation and confetti on completion
     if (problem.Done) {
@@ -121,6 +128,9 @@ const TableComponent = ({ onChecklistChange, onHeatmapChange }) => {
       setTimeout(() => setCelebrate(false), 1000); // Hide animation after 1s
     }
   };
+
+
+
 
   if (!problemData) {
     return <div>Loading...</div>; // Or null, or any placeholder

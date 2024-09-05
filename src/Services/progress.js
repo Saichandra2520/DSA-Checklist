@@ -1,6 +1,7 @@
 import Localbase from 'localbase';
 
 let db = new Localbase('heatmapDB');
+db.config.debug = false; // Disable debugging
 
 // Helper function to get the number of days in a month
 const getDaysInMonth = (month, year) => {
@@ -59,9 +60,12 @@ export const updateHeatmapData = async ( today, newValue) => {
   const currentYear = new Date().getFullYear();
   let doc = await db.collection('heatmap').doc(`year${currentYear}`).get();
   let heatmapData = doc.data;
- 
   // Update the specific day in the month
-  heatmapData[month][day-1] = newValue;
+  if(newValue)
+      heatmapData[month][day-1] = heatmapData[month][day-1] + 1;
+  else{
+    heatmapData[month][day-1] = heatmapData[month][day-1] -1 < 0 ? 0 :  heatmapData[month][day-1] -1;
+  }
 
   // Save the updated data back to Localbase
   await db.collection('heatmap').doc(`year${currentYear}`).set({ data: heatmapData });

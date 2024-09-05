@@ -4,9 +4,8 @@ import CircularProgressBar from "../../Components/Tools/CircularProgressBar/Circ
 import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
 import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
 
-const HomePage = ({sheets}) => {
+const HomePage = ({sheets,consistencyPoints,currentStreak}) => {
 
-console.log(sheets);
   const overrallPercentage = (sheets) =>{
     let totSolved = 0;
     let totQuestions = 0;
@@ -21,6 +20,7 @@ console.log(sheets);
   useEffect(()=>{
      overrallPercentage(sheets);
   },[sheets])
+  
   return (
     <div className="w-full">
       <div className="px-10 mx-4" >
@@ -84,7 +84,7 @@ console.log(sheets);
             </div>
           </div>
           <div>
-            <ConsistencyTracker />
+            <ConsistencyTracker consistencyPoints={consistencyPoints} currentStreak={currentStreak} />
           </div>
         </div>
       </div>

@@ -5,13 +5,11 @@ import TableComponent from '../../Components/Table/TableComponent';
 import { useParams } from 'react-router-dom';
 import { getTopicData } from '../../Services/service';
 
-const ProblemsSheetPage = ( {onChecklistChange} ) => {
+const ProblemsSheetPage = ( {onChecklistChange, currentStreak, consistencyPoints } ) => {
 
     const {topicId, sheetId} = useParams();
     const [sheet,setSheet] = useState();
-    function sheetfilter(sheet){
-        return sheet.id === sheetId
-    }
+    
     function topicfilter(topic){
         return topicId === topic.topicName.toLowerCase().split(" ").join("");
     }
@@ -45,7 +43,7 @@ const ProblemsSheetPage = ( {onChecklistChange} ) => {
                 </div>
             </div>
             <div className=''>
-                <ConsistencyTracker />
+                <ConsistencyTracker currentStreak={currentStreak} consistencyPoints={consistencyPoints} />
             </div>
         </div>
         <div className='w-full mt-8' >
