@@ -1,111 +1,64 @@
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { initializeSheet, getSheetData, getData } from './Services/service';
 import Header from './Components/Header/Header';
-import Sheetscontainer from './Components/Sheetscontainer/Sheetscontainer';
-import {Routes} from 'react-router-dom';
-import {Route} from 'react-router-dom';
-import Topics from './Components/Topics/Topics';
-import { useState,useEffect } from 'react';
-import { getData, updateDBData, resetDBData, exportDBData, importDBData } from './Services/DBservices';
-import TopicQuestions from './Components/TopicQuestions/TopicQuestions';
 import Footer from './Components/Footer/Footer';
-import About from './Components/About/About'
 import HomePage from './Pages/HomePage/HomePage';
 import SheetTopics from './Pages/SheetTopics/SheetTopics';
 import ProgressPage from './Pages/ProgressPage/ProgressPage';
 import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage';
+import { Routes, Route } from 'react-router-dom';
 
+//DATA
+import lovebabbar from './data/450DSAFinal_updated';
+import striver from './data/StriversheetFinal';
 
 function App() {
+  const [sheetsData, setSheetsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [lovebabarsheetData, setLovebabarsheetData] = useState([]);
-  const [striversheetData,setstriversheetData] = useState([]);
-  const [bro, setBro] = useState(0);
+  const [reloadTrigger, setReloadTrigger] = useState(false); // Add reload trigger state
 
+  const fetchSheetsData = async () => {
+    try {
+      // Fetch data from Localbase
+      getData((data) => {
+        // Combine all sheets' data into a single array
+        const combinedData = data.reduce((acc, sheet) => {
+          return acc.concat(sheet.data);
+        }, []);
+        // Set combined data to state
+        setSheetsData(combinedData);
+        setLoading(false);
+      });
+    } catch (error) {
+      console.error('Error fetching sheets data:', error);
+      setError(error);
+      setLoading(false);
+    }
+  };
 
-  useEffect(() =>{
-    getData((QuestionData) => {
-			setLovebabarsheetData(QuestionData);
-		},0);
+  useEffect(() => {
+    fetchSheetsData();
+  }, [reloadTrigger]); // Re-fetch data when reloadTrigger changes
+
+  const handleChecklistChange = () => {
+    // Function to handle checklist change and trigger data reload
+    console.log(reloadTrigger);
+    setReloadTrigger((prev) => !prev); // Toggle reloadTrigger to trigger re-fetch
     
-    getData((QuestionData2) => {
-			setstriversheetData(QuestionData2);
-      
-		},1);
-
-    
-
-},[]);
-
-function updateData(sheet,key,topicData,topicPosition){
-    let circle = [];
-    if(sheet === 0)
-      circle = lovebabarsheetData;
-    else if(sheet === 1)
-      circle = striversheetData;
-
-    let reGenerateUpdatedData = circle.map((topic,index) =>{
-      if(index === topicPosition) {
-        updateDBData(key,topicData,sheet);
-        return { topicName: topic.topicName, position: topic.position, ...topicData };
-      }
-      else{
-        return topic;
-      }
-    });
-    if(sheet === 0)
-        setLovebabarsheetData(reGenerateUpdatedData);
-    else if(sheet === 1)
-        setstriversheetData(reGenerateUpdatedData);
-}
-
-const topicChange =(e) =>{
-    setBro(e);
-}
-
-function totalquestions(data)
-  {
-      let sum = 0;
-      data.map((okay) =>{
-        sum += okay.questions.length;
-      })
-
-      return sum;
-  }
-
-
-
-
-
+  };
+  console.log(reloadTrigger);
   return (
     <div className='main' id='DSAsheets'>
-       <Header />
-       <Routes>
-        
-        <Route path='/' element={<HomePage />} />
-        <Route path='/:id/topics' element={<SheetTopics />} />
+      <Header />
+      <Routes>
+        <Route path='/' element={<HomePage sheets={sheetsData} />} />
+        <Route path='/sheets/:sheetId/topics' element={<SheetTopics sheets={sheetsData}  reload={reloadTrigger} />} />
         <Route path='/progress' element={<ProgressPage />} />
-        <Route path='/:id/topics/:id' element={<ProblemsSheetPage />} />
-        
-        
-        
-        </Routes>
-       
-        {/* <div className="dsasheets-container">
-            
-            <Routes>
-              <Route path='/test' element={<Sheetscontainer data1={lovebabarsheetData} data2={striversheetData}/>} />
-
-              
-              
-
-              <Route path='/450lovebabartopics' element={ <Topics topics={lovebabarsheetData} topicChange={topicChange} title={'Love Babbar DSA Sheet'} />} />
-              <Route path='/striversheettopics' element={ <Topics topics={striversheetData} topicChange={topicChange} title={'Striver A2Z DSA Sheet'} />} />
-              <Route path='/450lovebabartopics/problems' element={ <TopicQuestions data={lovebabarsheetData[bro]} updateData={updateData} title={'Love Babbar DSA Sheet'} s={0} totalquestions={totalquestions}/>} />
-              <Route path='/striversheettopics/problems' element={ <TopicQuestions data={striversheetData[bro]} updateData={updateData} title={'Striver A2Z DSA Sheet'} s={1} totalquestions={totalquestions} />} />
-
-            </Routes>  
-        </div> */}
-        <Footer />
+        <Route path='/sheets/:sheetId/topics/:topicId/problems' element={<ProblemsSheetPage sheets={sheetsData} onChecklistChange={handleChecklistChange}/>} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

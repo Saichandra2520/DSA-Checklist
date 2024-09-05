@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import CircularProgressBar from "../../Components/Tools/CircularProgressBar/CircularProgressBar";
-import Sheetscontainer from "../../Components/Sheetscontainer/Sheetscontainer";
 import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
 import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
 
-const HomePage = () => {
+const HomePage = ({sheets}) => {
+
+console.log(sheets);
+  const overrallPercentage = (sheets) =>{
+    let totSolved = 0;
+    let totQuestions = 0;
+    sheets?.forEach((sheet) => {
+      totSolved += sheet.solvedQuestions;
+      totQuestions += sheet.totalQuestions;
+    })
+
+    return Math.floor((totSolved/totQuestions)*100) ? Math.floor((totSolved/totQuestions)*100): 0 ;
+  }
+
+  useEffect(()=>{
+     overrallPercentage(sheets);
+  },[sheets])
   return (
     <div className="w-full">
       <div className="px-10 mx-4" >
@@ -22,7 +37,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="mt-10">
-            <SheetsWrapper navigateto='topics'/>
+            <SheetsWrapper navigateto='topics' sheets={sheets}/>
           </div>
         </div>
 
@@ -31,7 +46,7 @@ const HomePage = () => {
             <h3 className="font-semibold mt-5">Overall Progress</h3>
             <CircularProgressBar
               radius={100}
-              percentage={25}
+              percentage={overrallPercentage(sheets)}
               color={"#faa71b"}
               progressWidth={24}
             />

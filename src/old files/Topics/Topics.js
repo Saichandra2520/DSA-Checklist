@@ -1,7 +1,7 @@
 import React from 'react';
 import './topics.css';
 import { useNavigate } from 'react-router-dom';
-import CircularProgressBar from '../Tools/CircularProgressBar/CircularProgressBar';
+import CircularProgressBar from '../../Components/Tools/CircularProgressBar/CircularProgressBar';
 
 
 const Topics = ({topics,topicChange,title}) => {

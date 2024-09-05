@@ -24,11 +24,11 @@ import Logo from '../../assets/Logo.svg'
 import { Link } from 'react-router-dom';
 
 const products = [
-  { id: 'lovebabbar', name: 'Love babbar 450', description: 'curated list of 450 essential DSA problems', href: `lovebabbar/topics`, icon: ChartPieIcon },
-  { id:'striver',name: 'Striver`s sheet', description: 'Your 180-problem guide to mastering coding interviews', href: 'striver/topics', icon: CursorArrowRaysIcon },
-  { id:'apnacollege',name: 'Apna College', description: 'DSA by Shradha Didi & Aman Bhaiya', href: 'apnacollege/topics', icon: FingerPrintIcon },
-  { id:'neetcode',name: 'NeetCode 150', description: 'Ultimate 150-question guide to acing FAANG interviews.', href: 'neetcode/topics', icon: SquaresPlusIcon },
-  { id:'algoprep',name: 'AlgoPrep`s 151', description: 'SDE Sheet compiled by Nishant Bhaiya,', href: 'algoprep/topics', icon: ArrowPathIcon },
+  { id: 'lovebabbar', name: 'Love babbar 450', description: 'curated list of 450 essential DSA problems', href: `/sheets/lovebabbar/topics`, icon: ChartPieIcon },
+  { id:'striver',name: 'Striver`s sheet', description: 'Your 180-problem guide to mastering coding interviews', href: '/sheets/striversheet/topics', icon: CursorArrowRaysIcon },
+  { id:'apnacollege',name: 'Apna College', description: 'DSA by Shradha Didi & Aman Bhaiya', href: '/sheets/apnacollege/topics', icon: FingerPrintIcon },
+  { id:'neetcode',name: 'NeetCode 150', description: 'Ultimate 150-question guide to acing FAANG interviews.', href: 'sheets/neetcode/topics', icon: SquaresPlusIcon },
+  { id:'algoprep',name: 'AlgoPrep`s 151', description: 'SDE Sheet compiled by Nishant Bhaiya,', href: 'sheets/algoprep/topics', icon: ArrowPathIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },

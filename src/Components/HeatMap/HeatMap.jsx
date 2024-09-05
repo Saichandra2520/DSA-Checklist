@@ -1,49 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getHeatmapData, initializeHeatmapData } from '../../Services/progress';
 
-// Sample colors for different activity levels
 const colors = {
-  0: 'bg-gray-200',  // No activity
-  1: 'bg-green-300', // Low activity
-  2: 'bg-green-500', // Medium activity
-  3: 'bg-green-700', // High activity
+  0: 'bg-gray-200',    // No activity
+  1: 'bg-green-100',   // Very low activity
+  2: 'bg-green-300',   // Low activity
+  3: 'bg-green-500',   // Medium activity
+  4: 'bg-green-600',   // High activity
+  5: 'bg-green-700',   // Very high activity
+  6: 'bg-green-800',   // Extreme activity
+  // For levels greater than 6, use the same color as 6
 };
 
-// Sample data for 2024 (example data for simplicity)
-const sampleData = {
-    Jan: [0, 1, 2, 3, 0, 1, 2, 0, 3, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 3, 0], // January
-    Feb: [3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0], // February
-    Mar: [1, 1, 2, 2, 3, 3, 1, 1, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 1, 1, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3], // March
-    Apr: [0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 0, 3], // April
-    May: [1, 0, 1, 0, 3, 0, 1, 2, 0, 2, 1, 3, 0, 1, 2, 3, 0, 1, 2, 0, 3, 2, 1, 0, 1, 2, 3, 0, 1, 2], // May
-    Jun: [2, 2, 2, 2, 3, 3, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 2, 2, 1, 1, 2, 2, 3, 3, 0, 0, 2, 2, 1, 1], // June
-    Jul: [3, 1, 3, 1, 3, 1, 3, 1, 2, 2, 2, 2, 3, 3, 1, 1, 3, 3, 1, 1, 3, 3, 2, 2, 2, 2, 3, 3, 1, 1], // July
-    Aug: [2, 3, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 2, 3], // August
-    Sep: [1, 0, 1, 0, 2, 0, 3, 3, 1, 1, 2, 2, 1, 0, 1, 0, 3, 3, 2, 2, 1, 0, 1, 0, 2, 2, 3, 3, 1, 0], // September
-    Oct: [3, 2, 1, 0, 3, 2, 1, 0, 2, 2, 3, 3, 0, 0, 2, 2, 3, 3, 0, 0, 1, 1, 2, 2, 3, 3, 1, 1, 2, 2], // October
-    Nov: [1, 1, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3, 0, 0, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3], // November
-    Dec: [2, 0, 2, 0, 1, 3, 1, 3, 2, 0, 2, 0, 1, 3, 1, 3, 2, 0, 2, 0, 1, 3, 1, 3, 2, 0, 2, 0, 1, 3], // December
-  // Add other months here
-};
-
+// Helper function to get the first day of the month
 const getFirstDayOfMonth = (monthIndex, year) => {
   return new Date(year, monthIndex, 1).getDay();
 };
 
-
-
 const Heatmap = () => {
   const year = 2024;
+  const [heatmapData, setHeatmapData] = useState({});
+  const [totalActiveDays, setTotalActiveDays] = useState(0);
+  const [maxStreak, setMaxStreak] = useState(0);
+
+  // Calculate total active days and current max streak
+  const calculateActivityMetrics = (data) => {
+    let activeDays = 0;
+    let currentStreak = 0;
+    let longestStreak = 0;
+
+    Object.keys(data).forEach((month) => {
+      const days = data[month];
+
+      days.forEach((day) => {
+        if (day > 0) {
+          // Day with activity
+          activeDays += 1;
+          currentStreak += 1;
+        } else {
+          // No activity, reset streak
+          longestStreak = Math.max(longestStreak, currentStreak);
+          currentStreak = 0;
+        }
+      });
+
+      // Final streak check at the end of the month
+      longestStreak = Math.max(longestStreak, currentStreak);
+    });
+
+    setTotalActiveDays(activeDays);
+    setMaxStreak(longestStreak);
+  };
+
+  // Fetch heatmap data from Localbase when component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      await initializeHeatmapData();
+      const data = await getHeatmapData();
+      setHeatmapData(data);
+      calculateActivityMetrics(data); // Calculate metrics after fetching data
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="p-4 bg-white mt-4 border border-black rounded-2xl" style={{borderColor: "rgb(0,0,0,0.1)"}} >
       <div className="flex justify-between items-center mb-4">
-        <p className="text-sm font-semibold">27 problems completed in the past one year</p>
+        <p className="text-sm font-semibold">{totalActiveDays} problems completed in the past one year</p>
         <div className="flex space-x-4 items-center">
           <div className="text-xs">
-            Total active days: <span className="font-bold">6</span>
+            Total active days: <span className="font-bold">{totalActiveDays}</span>
           </div>
           <div className="text-xs">
-            Max streak: <span className="font-bold">2</span>
+            Max streak: <span className="font-bold">{maxStreak}</span>
           </div>
           <select className="text-sm border rounded px-2 py-1">
             <option>Current</option>
@@ -52,8 +81,8 @@ const Heatmap = () => {
         </div>
       </div>
       <div className="flex overflow-auto gap-y-1">
-        {Object.keys(sampleData).map((month, monthIndex) => {
-          const days = sampleData[month];
+        {Object.keys(heatmapData)?.map((month, monthIndex) => {
+          const days = heatmapData[month];
           const firstDay = getFirstDayOfMonth(monthIndex, year);
           const weeks = Array.from({ length: 6 }, () => Array(7).fill(null)); // 6 weeks, 7 days each
 
@@ -71,7 +100,7 @@ const Heatmap = () => {
                     {week.map((day, dayIndex) => (
                       <div
                         key={dayIndex}
-                        className={`w-2.5 h-2.5 ${day !== null ? colors[day] : 'bg-transparent'} rounded-sm`}
+                        className={`w-2.5 h-2.5 ${day !== null ? day >= 6 ? colors[6] :colors[day] : 'bg-transparent'} rounded-sm`}
                       />
                     ))}
                   </div>

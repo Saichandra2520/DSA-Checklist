@@ -4,7 +4,7 @@ import './footer.css';
 
 const Footer = () => {
   return (
-    <div>
+    <div className='pt-10'>
         <footer className='footer bg-custom-orange text-black'>
             <div className='footer-item'>
                 <a href='https://github.com/Saichandra2520/DSA-Checklist' target="_blank"><span>✨</span>Support | Terms of Service | Privacy Policy | Contact Us |</a>
