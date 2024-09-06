@@ -50,12 +50,3 @@ DSA Sheets is a web application designed to help students and professionals prac
 
 The list of questions and topics in DSA Sheets is inspired by various resources and contributions from the DSA community. Special thanks to all contributors for their valuable inputs.
 
-### Key Points:
-
-1. **Badges**: Include badges for React and visiting the website.
-2. **Overview**: Briefly describe the features and provide a link to more details.
-3. **What is DSA Sheets?**: Explain the tool's purpose and benefits.
-4. **Dependencies**: List the technologies used.
-5. **WIP**: Mention ongoing and planned improvements.
-6. **Run Locally**: Provide steps to set up the project.
-7. **Credits**: Acknowledge sources and contributors.
