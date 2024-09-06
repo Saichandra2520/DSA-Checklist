@@ -58,6 +58,10 @@ const callsToAction = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="bg-white border-b border-black-30 h-13 sticky top-0 z-50 w-lvw">
       <nav
@@ -156,7 +160,7 @@ export default function Header() {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-2/5 overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-300 ease-in-out transform ${ mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">DS Sheets</span>
@@ -201,6 +205,7 @@ export default function Header() {
                 </Disclosure>
                 <Link
                   to="/progress"
+                  onClick={handleMenuClose}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   progress
