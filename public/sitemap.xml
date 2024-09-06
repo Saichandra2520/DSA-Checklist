@@ -38,11 +38,4 @@
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://github.com/Saichandra2520/DSA-Checklist</loc>
-    <lastmod>2024-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
 </urlset>
