@@ -1,7 +1,9 @@
 import React from "react";
 import RectangularProgressBar from "../Tools/RectangularProgressBar/RectangularProgressBar";
 
-const TopicwiseAnalytics = ({sheets}) => {
+// TopicwiseAnalytics component to display progress for various topics
+const TopicwiseAnalytics = ({ sheets }) => {
+  // List of predefined topic names
   const topicNames = [
     "Array",
     "Dynamic Programming",
@@ -12,15 +14,16 @@ const TopicwiseAnalytics = ({sheets}) => {
     "Binary Search",
     "Greedy",
     "Graphs",
-    "Heap",
-    "Stacks",
-    "Queues"
+    "Heaps",
+    "Stacks & Queues",
   ];
 
+  // Function to calculate completed and total problems for a specific topic
   const calculateTopicData = (sheets, topicName) => {
     let completedProblems = 0;
     let totalProblems = 0;
 
+    // Iterate over all sheets and problems to accumulate counts
     sheets.forEach((sheet) => {
       sheet.problems.forEach((problem) => {
         if (problem.topicName === topicName) {
@@ -33,11 +36,12 @@ const TopicwiseAnalytics = ({sheets}) => {
     return { completedProblems, totalProblems };
   };
 
-  // Calculate Miscellaneous data
+  // Function to calculate completed and total problems for miscellaneous topics
   const calculateMiscellaneousData = (sheets) => {
     let completedProblems = 0;
     let totalProblems = 0;
 
+    // Iterate over all sheets and problems to accumulate counts for non-predefined topics
     sheets.forEach((sheet) => {
       sheet.problems.forEach((problem) => {
         if (!topicNames.includes(problem.topicName)) {
@@ -50,7 +54,7 @@ const TopicwiseAnalytics = ({sheets}) => {
     return { completedProblems, totalProblems };
   };
 
-  // Get data for all topics and Miscellaneous
+  // Calculate data for each topic and miscellaneous topics
   const topicData = topicNames.map(topicName => ({
     topicName,
     ...calculateTopicData(sheets, topicName)
@@ -60,7 +64,7 @@ const TopicwiseAnalytics = ({sheets}) => {
 
   return (
     <div
-      className="w-full px-8 py-4 flex flex-col justify-around  mt-4 box-border border border-black rounded-2xl"
+      className="w-full px-8 py-4 flex flex-col justify-around mt-4 box-border border border-black rounded-2xl"
       style={{ borderColor: "rgb(0,0,0,0.1)" }}
     >
       <div
@@ -71,8 +75,9 @@ const TopicwiseAnalytics = ({sheets}) => {
           Topic-wise Analytics
         </h1>
       </div>
-      <div className="mt-4 flex gap-2 justify-around" >
-      {topicNames?.map((topicName) => {
+      <div className="mt-4 flex gap-2 justify-around flex-wrap">
+        {topicNames.map((topicName) => {
+          // Get completed and total problems for each topic
           const { completedProblems, totalProblems } = calculateTopicData(sheets, topicName);
           return (
             <RectangularProgressBar
@@ -83,6 +88,7 @@ const TopicwiseAnalytics = ({sheets}) => {
             />
           );
         })}
+        {/* Display a progress bar for miscellaneous topics if there are any */}
         {miscellaneousData.totalProblems > 0 && (
           <RectangularProgressBar
             key="Miscellaneous"

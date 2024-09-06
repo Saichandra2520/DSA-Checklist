@@ -1755,13 +1755,13 @@ export default {
         ]
     },
     {
-        topicName: 'Stacks and Queues',
+        topicName: 'Stacks & Queues',
         position: 6,
         started: false,
         doneQuestions: 0,
         questions: [
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement Stack using Arrays",
                 "difficulty":"easy",
 				"Done": false,
@@ -1771,7 +1771,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement Queue using Arrays",
                 "difficulty":"easy",
 				"Done": false,
@@ -1781,7 +1781,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement Stack using Queue",
                 "difficulty":"easy",
 				"Done": false,
@@ -1791,7 +1791,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/implement-stack-using-queues/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement Queue using Stack",
                 "difficulty":"easy",
 				"Done": false,
@@ -1801,7 +1801,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/implement-queue-using-stacks/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement stack using Linkedlist",
                 "difficulty":"easy",
 				"Done": false,
@@ -1811,7 +1811,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement queue using Linkedlist",
                 "difficulty":"easy",
 				"Done": false,
@@ -1821,7 +1821,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Check for balanced paranthesis",
                 "difficulty":"easy",
 				"Done": false,
@@ -1831,7 +1831,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/valid-parentheses/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Implement Min Stack",
                 "difficulty":"easy",
 				"Done": false,
@@ -1841,7 +1841,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/min-stack/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Infix to Postfix Conversion using Stack",
                 "difficulty":"easy",
 				"Done": false,
@@ -1851,7 +1851,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Prefix to Infix Conversion",
                 "difficulty":"easy",
 				"Done": false,
@@ -1861,7 +1861,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Prefix to Postfix Conversion",
                 "difficulty":"easy",
 				"Done": false,
@@ -1871,7 +1871,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Postfix to Prefix Conversion",
                 "difficulty":"easy",
 				"Done": false,
@@ -1881,7 +1881,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Postfix to Infix",
                 "difficulty":"easy",
 				"Done": false,
@@ -1891,7 +1891,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Convert Infix To Prefix Notation",
                 "difficulty":"easy",
 				"Done": false,
@@ -1901,7 +1901,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Next Greater Element",
                 "difficulty":"medium",
 				"Done": false,
@@ -1911,7 +1911,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/next-greater-element-i/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Next Greater Element 2",
                 "difficulty":"medium",
 				"Done": false,
@@ -1921,7 +1921,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/next-greater-element-ii/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Next Smaller Element",
                 "difficulty":"medium",
 				"Done": false,
@@ -1931,7 +1931,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Number of NGEs to the right",
                 "difficulty":"medium",
 				"Done": false,
@@ -1941,7 +1941,7 @@ export default {
 				"URL2": ""
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Trapping Rainwater",
                 "difficulty":"medium",
 				"Done": false,
@@ -1951,7 +1951,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/trapping-rain-water/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Sum of subarray minimum",
                 "difficulty":"medium",
 				"Done": false,
@@ -1961,7 +1961,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/sum-of-subarray-minimums/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Stock span problem",
                 "difficulty":"medium",
 				"Done": false,
@@ -1971,7 +1971,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/online-stock-span/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Asteroid Collision",
                 "difficulty":"medium",
 				"Done": false,
@@ -1981,7 +1981,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/asteroid-collision/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Sum of subarray ranges",
                 "difficulty":"medium",
 				"Done": false,
@@ -1991,7 +1991,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/sum-of-subarray-ranges/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Remove k Digits",
                 "difficulty":"medium",
 				"Done": false,
@@ -2001,7 +2001,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/remove-k-digits/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Largest rectangle in a histogram",
                 "difficulty":"medium",
 				"Done": false,
@@ -2011,7 +2011,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/largest-rectangle-in-histogram/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Maximal Rectangles",
                 "difficulty":"medium",
 				"Done": false,
@@ -2021,7 +2021,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/maximal-rectangle/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Sliding Window maximum",
                 "difficulty":"hard",
 				"Done": false,
@@ -2031,7 +2031,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/sliding-window-maximum/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Stock Span Problem",
                 "difficulty":"hard",
 				"Done": false,
@@ -2041,7 +2041,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/online-stock-span/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "The Celebrity Problem",
                 "difficulty":"hard",
 				"Done": false,
@@ -2051,7 +2051,7 @@ export default {
 				"URL2": "https://leetcode.com/accounts/login/?next=/problems/find-the-celebrity/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "Rotten Oranges",
                 "difficulty":"hard",
 				"Done": false,
@@ -2061,7 +2061,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/rotting-oranges/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "LRU cache (IMPORTANT)",
                 "difficulty":"hard",
 				"Done": false,
@@ -2071,7 +2071,7 @@ export default {
 				"URL2": "https://leetcode.com/problems/lru-cache/"
             },
             {
-                "Topic": "Stacks and Queues",
+                "Topic": "Stacks & Queues",
 				"Problem": "LFU cache",
                 "difficulty":"hard",
 				"Done": false,

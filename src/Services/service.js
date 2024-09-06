@@ -1,5 +1,6 @@
 import Localbase from "localbase";
 import sheet2Data, { version } from "../data/StriversheetFinal";
+import sheet3Data from "../data/ApnaCollege";
 import sheet1Data from "../data/450DSAFinal_updated";
 
 
@@ -15,7 +16,9 @@ window.version = version; // Exposing current version globally
 
 // Object to hold all sheets' data
 let sheets = {
+    "lovebabbar" : sheet1Data,
     "striversheet": sheet2Data,
+    "apnacollege": sheet3Data
 };
 
 // Function to insert data for all sheets into the database

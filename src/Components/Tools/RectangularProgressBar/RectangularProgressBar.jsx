@@ -6,7 +6,7 @@ const RectangularProgressBar = ({ completedProblems, TotProbs, topicName }) => {
   const progressHeight = (progressPercentage / 100) * 200; // Assuming the height of the container is 300
   const textPosition = 200 - progressHeight - 10;
   return (
-    <div className="flex items-center flex-col gap-1 max-w-2 ">
+    <div className="flex items-center flex-col gap-1 max-w-2 min-w-min">
       <div>
         <div className="mb-1">
           <p className="font-light text-xs">{TotProbs}</p>

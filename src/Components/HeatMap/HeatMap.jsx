@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getHeatmapData, initializeHeatmapData } from '../../Services/progress';
 
+// Define colors for different activity levels
 const colors = {
   0: 'bg-gray-200',    // No activity
   1: 'bg-green-200',   // Very low activity
@@ -17,11 +18,11 @@ const getFirstDayOfMonth = (monthIndex, year) => {
   return new Date(year, monthIndex, 1).getDay();
 };
 
-const Heatmap = () => {
-  const year = 2024;
-  const [heatmapData, setHeatmapData] = useState({});
-  const [totalActiveDays, setTotalActiveDays] = useState(0);
-  const [maxStreak, setMaxStreak] = useState(0);
+const Heatmap = ({ totSolvedQuestions }) => {
+  const year = 2024; // Define the year for the heatmap
+  const [heatmapData, setHeatmapData] = useState({}); // State to store heatmap data
+  const [totalActiveDays, setTotalActiveDays] = useState(0); // State to store total active days
+  const [maxStreak, setMaxStreak] = useState(0); // State to store the maximum streak of activity
 
   // Calculate total active days and current max streak
   const calculateActivityMetrics = (data) => {
@@ -34,11 +35,11 @@ const Heatmap = () => {
 
       days.forEach((day) => {
         if (day > 0) {
-          // Day with activity
+          // If there is activity on this day
           activeDays += 1;
           currentStreak += 1;
         } else {
-          // No activity, reset streak
+          // No activity on this day, reset streak
           longestStreak = Math.max(longestStreak, currentStreak);
           currentStreak = 0;
         }
@@ -48,6 +49,7 @@ const Heatmap = () => {
       longestStreak = Math.max(longestStreak, currentStreak);
     });
 
+    // Update state with calculated metrics
     setTotalActiveDays(activeDays);
     setMaxStreak(longestStreak);
   };
@@ -55,19 +57,19 @@ const Heatmap = () => {
   // Fetch heatmap data from Localbase when component mounts
   useEffect(() => {
     const fetchData = async () => {
-      await initializeHeatmapData();
-      const data = await getHeatmapData();
-      setHeatmapData(data);
-      calculateActivityMetrics(data); // Calculate metrics after fetching data
+      await initializeHeatmapData(); // Ensure heatmap data is initialized
+      const data = await getHeatmapData(); // Fetch heatmap data
+      setHeatmapData(data); // Update state with fetched data
+      calculateActivityMetrics(data); // Calculate metrics based on fetched data
     };
     fetchData();
-  }, []);
+  }, []); // Empty dependency array means this effect runs once after the initial render
 
   return (
-    <div className="p-4 bg-white mt-4 border border-black rounded-2xl" style={{borderColor: "rgb(0,0,0,0.1)"}} >
-      <div className="flex justify-between items-center mb-4">
-        <p className="text-sm font-semibold">{totalActiveDays} problems completed in the past one year</p>
-        <div className="flex space-x-4 items-center">
+    <div className="p-4 bg-white mt-4 border border-black rounded-2xl" style={{ borderColor: "rgb(0,0,0,0.1)" }}>
+      <div className="flex justify-between items-center mb-4 flex-wrap">
+        <p className="text-xs md:text-sm font-semibold">{totSolvedQuestions} problems completed in the past year</p>
+        <div className="flex space-x-4 items-center flex-wrap">
           <div className="text-xs">
             Total active days: <span className="font-bold">{totalActiveDays}</span>
           </div>
@@ -76,16 +78,16 @@ const Heatmap = () => {
           </div>
           <select className="text-sm border rounded px-2 py-1">
             <option>Current</option>
-            <option>Last Year</option>
           </select>
         </div>
       </div>
       <div className="flex overflow-auto gap-y-1">
         {Object.keys(heatmapData)?.map((month, monthIndex) => {
-          const days = heatmapData[month];
-          const firstDay = getFirstDayOfMonth(monthIndex, year);
-          const weeks = Array.from({ length: 6 }, () => Array(7).fill(null)); // 6 weeks, 7 days each
+          const days = heatmapData[month]; // Get the days for the current month
+          const firstDay = getFirstDayOfMonth(monthIndex, year); // Get the first day of the month
+          const weeks = Array.from({ length: 6 }, () => Array(7).fill(null)); // Create a 6-week grid
 
+          // Populate weeks with days
           days.forEach((day, index) => {
             const dayIndex = (firstDay + index) % 7;
             const weekIndex = Math.floor((firstDay + index) / 7);
@@ -94,13 +96,13 @@ const Heatmap = () => {
 
           return (
             <div key={monthIndex} className="flex flex-col items-center">
-              <div className="flex flex-row gap-1 ">
-                {weeks.map((week, weekIndex) => (    
+              <div className="flex flex-row gap-1">
+                {weeks.map((week, weekIndex) => (
                   <div key={weekIndex} className="flex flex-col gap-1">
                     {week.map((day, dayIndex) => (
                       <div
                         key={dayIndex}
-                        className={`w-2.5 h-2.5 ${day !== null ? day >= 6 ? colors[6] :colors[day] : 'bg-transparent'} rounded-sm`}
+                        className={`w-2.5 h-2.5 ${day !== null ? (day >= 6 ? colors[6] : colors[day]) : 'bg-transparent'} rounded-sm`}
                       />
                     ))}
                   </div>
