@@ -1,23 +1,58 @@
-# DSA Sheets
+# DSA Sheets 🚀
 
-**DSA Sheets** is a web-based tool designed to help students and professionals track their progress in mastering Data Structures and Algorithms (DSA). This project provides a comprehensive set of checklist sheets for various DSA topics, allowing users to easily mark their progress and monitor their proficiency.
+[![React Badge](http://img.shields.io/badge/Powered%20By-React-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Website Badge](https://img.shields.io/badge/Visit-Now-green?style=for-the-badge&logo=vercel)](https://dsasheets.com/)
 
-## Features
+## Overview 👀
+DSA Sheets is a web application designed to help students and professionals practice and improve their problem-solving skills 
 
-- **Interactive Checklists**: Track your progress in learning different DSA topics.
-- **User-Friendly Interface**: Simple and intuitive design to enhance user experience.
-- **Local Storage**: Save and retrieve your progress using the browser’s local storage.
+- **Progress-Page with Visual Progress Tracking**
+- **Consistency-Points for motivation**
+- **Topic-wise progress tracking 🧐**
+- **Multiple-Sheets**
+- **Complete local storage 📂**
+- **Mobile-first design ✌🏻**
+- **Clean UI ⚡**
 
-## Tech Stack
+## What is DSA Sheets? 🤔
 
-- **HTML**: For the structure of the web pages.
-- **CSS**: For styling and layout.
-- **ReactJS**: For building the user interface.
-- **Local Storage**: To store user progress locally in the browser.
+#### DSA Sheets is a comprehensive tool designed to help you track your progress in mastering Data Structures and Algorithms (DSA). With interactive checklists and a user-friendly interface, it aims to boost your confidence and proficiency in solving coding problems.
 
-## Installation
+#### DSA Sheets doesn't guarantee a job but guarantees improved confidence in tackling any coding challenge if used diligently. 👍🏻
 
-1. **Clone the Repository**
+#### More details on how [DSA Sheets] can help you -> [here].
 
-   ```bash
-   git clone https://github.com/Saichandra2520/DSA-Checklist.git
+## Dependencies 🗃
+
+- [React] - **Frontend Framework**
+- [CSS] - **For styling and layout**
+- [Local Storage] - **For offline progress tracking**
+
+## WIP 🛠
+
+- ~Dark Mode~
+- ~Add `bookmark` feature~
+- Leader Board
+- Better Responsive CSS
+- Enhanced State Management
+
+## Run Locally 💻
+
+```bash
+git clone https://github.com/Saichandra2520/DSA-Checklist.git
+npm install
+npm start
+
+## Credits 🙏🏻
+
+The list of questions and topics in DSA Sheets is inspired by various resources and contributions from the DSA community. Special thanks to all contributors for their valuable inputs.
+
+### Key Points:
+
+1. **Badges**: Include badges for React and visiting the website.
+2. **Overview**: Briefly describe the features and provide a link to more details.
+3. **What is DSA Sheets?**: Explain the tool's purpose and benefits.
+4. **Dependencies**: List the technologies used.
+5. **WIP**: Mention ongoing and planned improvements.
+6. **Run Locally**: Provide steps to set up the project.
+7. **Credits**: Acknowledge sources and contributors.
