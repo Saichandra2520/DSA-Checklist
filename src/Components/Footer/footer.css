@@ -3,30 +3,10 @@
     margin: 0;
     bottom: 0;
     width: 100%;
-    height: 40px;
-    background-color: #383434;
+    height: 30px;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-}
-
-.footer:hover {
-    background-color: black;
-}
-
-.footer-item a {
-    text-decoration: none;
-    color: azure;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.footer-item a:hover {
-    color: aquamarine;
-}
-
-.footer-item span {
-    font-size: 20px;
 }

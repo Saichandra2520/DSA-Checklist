@@ -1,0 +1,39 @@
+/* styles.css */
+.celebrate-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0); /* Transparent background */
+  z-index: 9999;
+  animation: celebrate 1s ease-out;
+  pointer-events: none; /* Prevent interaction with overlay */
+}
+
+@keyframes celebrate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Checkbox.css */
+.custom-checkbox {
+  @apply appearance-none w-6 h-6 border border-gray-300 rounded-sm relative cursor-pointer;
+}
+
+.custom-checkbox:checked {
+  @apply bg-green-500 border-transparent;
+}
+
+.custom-checkbox:checked::before {
+  content: '\2713'; /* Unicode checkmark */
+  @apply absolute inset-0 text-white flex items-center justify-center font-bold;
+  font-size: 1.25rem; /* Adjust the checkmark size as needed */
+}

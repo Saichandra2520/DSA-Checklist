@@ -1,98 +1,138 @@
-import './App.css';
-import Header from './Components/Header/Header';
-import Sheetscontainer from './Components/Sheetscontainer/Sheetscontainer';
-import {Routes} from 'react-router-dom';
-import {Route} from 'react-router-dom';
-import Topics from './Components/Topics/Topics';
-import { useState,useEffect } from 'react';
-import { getData, updateDBData, resetDBData, exportDBData, importDBData } from './Services/DBservices';
-import TopicQuestions from './Components/TopicQuestions/TopicQuestions';
-import Footer from './Components/Footer/Footer';
-import About from './Components/About/About'
-
+import React, { useEffect, useState } from 'react';
+import { initializeSheet, getSheetData, getData } from './Services/service'; // Import functions for initializing and fetching sheet data
+import Header from './Components/Header/Header'; // Import Header component
+import Footer from './Components/Footer/Footer'; // Import Footer component
+import HomePage from './Pages/HomePage/HomePage'; // Import HomePage component
+import SheetTopics from './Pages/SheetTopics/SheetTopics'; // Import SheetTopics component
+import ProgressPage from './Pages/ProgressPage/ProgressPage'; // Import ProgressPage component
+import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage'; // Import ProblemsSheetPage component
+import { Routes, Route } from 'react-router-dom'; // Import routing components from react-router-dom
+import { getHeatmapData, initializeHeatmapData } from "./Services/progress"; // Import functions for heatmap data management
 
 function App() {
+  // State to hold the sheets data
+  const [sheetsData, setSheetsData] = useState([]);
+  // State to handle loading status
+  const [loading, setLoading] = useState(true);
+  // State to handle errors
+  const [error, setError] = useState(null);
 
-  const [lovebabarsheetData, setLovebabarsheetData] = useState([]);
-  const [striversheetData,setstriversheetData] = useState([]);
-  const [bro, setBro] = useState(0);
+  // State to trigger reload of data
+  const [reloadTrigger, setReloadTrigger] = useState(false); 
 
+  // Function to fetch sheets data from Localbase
+  const fetchSheetsData = async () => {
+    try {
+      // Fetch data using getData function
+      getData((data) => {
+        // Combine all sheets' data into a single array
+        const combinedData = data.reduce((acc, sheet) => {
+          return acc.concat(sheet.data);
+        }, []);
+        // Set combined data to state
+        setSheetsData(combinedData);
+        setLoading(false);
+      });
+    } catch (error) {
+      // Handle any errors during fetching
+      console.error('Error fetching sheets data:', error);
+      setError(error);
+      setLoading(false);
+    }
+  };
 
-  useEffect(() =>{
-    getData((QuestionData) => {
-			setLovebabarsheetData(QuestionData);
-		},0);
+  // Fetch sheets data when component mounts or reloadTrigger changes
+  useEffect(() => {
+    fetchSheetsData();
+  }, [reloadTrigger]);
+
+  // Function to handle changes in checklist and trigger data reload
+  const handleChecklistChange = () => {
+    // Toggle reloadTrigger to re-fetch data
+    setReloadTrigger((prev) => !prev); 
+  };
+
+  // State to track the current streak of activity
+  const [currentStreak, setCurrentStreak] = useState(0);
+  // State to track the consistency points based on streak
+  const [consistencyPoints, setConsistencyPoints] = useState(0);
+  // State to track the average number of problems solved this month
+  const [avgProblems, setAverage] = useState(0);
+
+  // Function to calculate the average number of problems solved in the current month
+  const calculateAverageProblemsSolvedThisMonth = (heatmapData) => {
+    const today = new Date();
+    const currentMonth = today.getMonth(); // Get the current month (0-based index)
     
-    getData((QuestionData2) => {
-			setstriversheetData(QuestionData2);
-      
-		},1);
-
-    
-
-},[]);
-
-function updateData(sheet,key,topicData,topicPosition){
-    let circle = [];
-    if(sheet === 0)
-      circle = lovebabarsheetData;
-    else if(sheet === 1)
-      circle = striversheetData;
-
-    let reGenerateUpdatedData = circle.map((topic,index) =>{
-      if(index === topicPosition) {
-        updateDBData(key,topicData,sheet);
-        return { topicName: topic.topicName, position: topic.position, ...topicData };
-      }
-      else{
-        return topic;
+    let totalProblems = 0;
+    const monthNames = ['Jan', "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", 'Sep', "Oct", "Nov", "Dec"];
+  
+    // Get the current month abbreviation
+    const tempmonth = monthNames[currentMonth];
+  
+    // Loop through the heatmap data for the current month
+    Object.keys(heatmapData).forEach((month) => {
+      if (tempmonth === month) {
+        const days = heatmapData[month];
+        // Sum up the problems solved each day
+        days.forEach((day) => {
+          totalProblems += day;
+        });
       }
     });
-    if(sheet === 0)
-        setLovebabarsheetData(reGenerateUpdatedData);
-    else if(sheet === 1)
-        setstriversheetData(reGenerateUpdatedData);
-}
+  
+    // Return the total problems solved in the current month
+    return totalProblems;
+  };
 
-const topicChange =(e) =>{
-    setBro(e);
-}
+  // Function to calculate activity metrics such as streak and consistency points
+  const calculateActivityMetrics = (data) => {
+    let streak = 0;
+    let points = 0;
+    const average = calculateAverageProblemsSolvedThisMonth(data);
+   
+    // Loop through the heatmap data to calculate streak and points
+    Object.keys(data).forEach((month) => {
+      const days = data[month];
+      days.forEach((day) => {
+        if (day > 0) {
+          // Day with activity increases streak and points
+          streak += 1;
+          points = day * (2 ** streak); // Points increase exponentially with streak
+        } else {
+          // No activity, reset streak
+          streak = 1;
+        }
+      });
+    });
+    
+    // Update state with calculated metrics
+    setAverage(average);
+    setCurrentStreak(streak);
+    setConsistencyPoints(points);
+  };
 
-function totalquestions(data)
-  {
-      let sum = 0;
-      data.map((okay) =>{
-        sum += okay.questions.length;
-      })
-
-      return sum;
-  }
-
-
-
-
+  // Fetch heatmap data from Localbase and calculate metrics when component mounts or reloadTrigger changes
+  useEffect(() => {
+    const fetchData = async () => {
+      await initializeHeatmapData(); // Initialize heatmap data if needed
+      const data = await getHeatmapData(); // Fetch heatmap data
+      calculateActivityMetrics(data); // Calculate metrics after fetching data
+    };
+    fetchData();
+  }, [reloadTrigger]);
 
   return (
     <div className='main' id='DSAsheets'>
-        <Header />
-        <div className="dsasheets-container">
-            
-            <Routes>
-              <Route path='/' element={<Sheetscontainer data1={lovebabarsheetData} data2={striversheetData}/>} />
-
-              {/* About Page */}
-              <Route path='/about' element={<About></About>} />
-
-              <Route path='/450lovebabartopics' element={ <Topics topics={lovebabarsheetData} topicChange={topicChange} title={'Love Babbar DSA Sheet'} />} />
-              <Route path='/striversheettopics' element={ <Topics topics={striversheetData} topicChange={topicChange} title={'Striver A2Z DSA Sheet'} />} />
-              <Route path='/450lovebabartopics/problems' element={ <TopicQuestions data={lovebabarsheetData[bro]} updateData={updateData} title={'Love Babbar DSA Sheet'} s={0} totalquestions={totalquestions}/>} />
-              <Route path='/striversheettopics/problems' element={ <TopicQuestions data={striversheetData[bro]} updateData={updateData} title={'Striver A2Z DSA Sheet'} s={1} totalquestions={totalquestions} />} />
-
-            </Routes>
-
-            
-        </div>
-        <Footer />
+      <Header /> {/* Render the Header component */}
+      <Routes>
+        {/* Define routes for different pages */}
+        <Route path='/' element={<HomePage sheets={sheetsData} currentStreak={currentStreak} consistencyPoints={consistencyPoints} />} />
+        <Route path='/sheets/:sheetId/topics' element={<SheetTopics sheets={sheetsData} reload={reloadTrigger} currentStreak={currentStreak} consistencyPoints={consistencyPoints} />} />
+        <Route path='/progress' element={<ProgressPage sheets={sheetsData} currentStreak={currentStreak} consistencyPoints={consistencyPoints} avgProblems={avgProblems} />} />
+        <Route path='/sheets/:sheetId/topics/:topicId/problems' element={<ProblemsSheetPage sheets={sheetsData} onChecklistChange={handleChecklistChange} currentStreak={currentStreak} consistencyPoints={consistencyPoints} />} />
+      </Routes>
+      <Footer /> {/* Render the Footer component */}
     </div>
   );
 }

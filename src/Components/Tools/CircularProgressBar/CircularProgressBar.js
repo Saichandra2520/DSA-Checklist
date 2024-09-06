@@ -1,58 +1,49 @@
 import React from 'react';
-import './circularprogressbar.css';
 
-const CircularProgressBar = ({percentage,circleWidth}) => {
+const CircularProgressBar = ({ radius, percentage, color, progressWidth, bgColor }) => {
+  const strokeWidth = progressWidth ? progressWidth : 12 ; // Width of the progress stroke
+  const normalizedRadius = radius - strokeWidth; // Adjust for stroke width
+  const circumference = 2 * Math.PI * normalizedRadius;
+  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  const bgColorReal = bgColor != null ? `${bgColor}` :"none";
+  const strokeColor = bgColor != null ? `${bgColor}` :"#e5e5e5";
 
-    const radius = 42;
-    const dashArray = radius * Math.PI * 2;
-    const dashOffset = dashArray - (dashArray * percentage) / 100;
-
-    const st = {
-        strokeDasharray: `${dashArray}`,
-        strokeDashoffset: `${dashOffset}`,
-    }
-    
   return (
-    <div className='cpbar'>
-        <svg
-            width={circleWidth}
-            height={circleWidth}
-            viewBox={`0 0 ${circleWidth} ${circleWidth}`}
-            >
-                <defs>
-                    <linearGradient id='gradiant'>
-                        <stop offset="10%" stop-color="#12c2e9"/>
-                        <stop offset="50%" stop-color="#c471ed"/>
-                        <stop offset="100%" stop-color="#f64f59"/>
-                    </linearGradient>
-                </defs>
-
-            <circle
-                cx={circleWidth/2}
-                cy={circleWidth/2}
-                strokeWidth="10px"
-                r ={radius}
-                className="circle-background"
-                />
-
-            <circle
-                cx={circleWidth/2}
-                cy={circleWidth/2}
-                strokeWidth="10px"
-                r ={radius}
-                className="circle-progress"
-                style={st}
-                
-
-                transform= {`rotate(-90 ${circleWidth / 2} ${circleWidth / 2})`}
-                stroke="url(#gradiant)"
-                />
-                <text x="50%" y="50%" dy='0.3em' textAnchor='middle' className='circle-text'>
-                    {Math.round(percentage)}%
-                </text>
-        </svg>
+    <div className="relative flex items-center justify-center "
+    style={{ width: `${radius * 2}px`, height: `${radius * 2}px` }} >
+      <svg
+        width={radius * 2}
+        height={radius * 2}
+        className="rotate-[-90deg]" // Rotate to start from top
+        viewBox={`0 0 ${radius * 2} ${radius * 2}`}
+      >
+        <circle
+          stroke={strokeColor}
+          fill= { bgColorReal}
+          cx={radius}
+          cy={radius}
+          r={normalizedRadius}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round" // Rounded corners
+        />
+        <circle
+          stroke={color}
+          fill="none"
+          cx={radius}
+          cy={radius}
+          r={normalizedRadius}
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          strokeLinecap="round" // Rounded corners
+          style={{ transition: 'stroke-dashoffset 0.35s ease' }}
+        />
+      </svg>
+      <div className="absolute flex items-center justify-center text-lg font-semibold">
+        {percentage}%
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CircularProgressBar
+export default CircularProgressBar;
