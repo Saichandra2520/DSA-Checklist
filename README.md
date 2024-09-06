@@ -32,6 +32,8 @@ DSA Sheets is a web application designed to help students and professionals prac
 
 - ~Dark Mode~
 - ~Add `bookmark` feature~
+- ~resource feature~
+- ~Interview help feature~
 - Leader Board
 - Better Responsive CSS
 - Enhanced State Management
