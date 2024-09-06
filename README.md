@@ -40,10 +40,11 @@ DSA Sheets is a web application designed to help students and professionals prac
 
 ## Run Locally 💻
 
-```bash
-git clone https://github.com/Saichandra2520/DSA-Checklist.git
-npm install
-npm start
+   ```bash
+   git clone https://github.com/Saichandra2520/DSA-Checklist.git
+   npm install
+   npm start
+   ``` 
 
 ## Credits 🙏🏻
 
