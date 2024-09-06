@@ -48,21 +48,7 @@ const products = [
     description: "DSA by Shradha Didi & Aman Bhaiya",
     href: "/sheets/apnacollege/topics",
     icon: FingerPrintIcon,
-  },
-  {
-    id: "neetcode",
-    name: "NeetCode 150",
-    description: "Ultimate 150-question guide to acing FAANG interviews.",
-    href: "sheets/neetcode/topics",
-    icon: SquaresPlusIcon,
-  },
-  {
-    id: "algoprep",
-    name: "AlgoPrep`s 151",
-    description: "SDE Sheet compiled by Nishant Bhaiya,",
-    href: "sheets/algoprep/topics",
-    icon: ArrowPathIcon,
-  },
+  }
 ];
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },

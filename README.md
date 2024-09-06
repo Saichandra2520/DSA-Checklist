@@ -48,7 +48,7 @@ DSA Sheets is a web application designed to help students and professionals prac
 
 ## Credits 🙏🏻
 
-The list of questions and topics in DSA Sheets is inspired by various resources and contributions from the DSA community. Special thanks to all contributors for their valuable inputs.
+   The list of questions and topics in DSA Sheets is inspired by various resources and contributions from the DSA community. Special thanks to all contributors for their valuable inputs.
 =======
 ## Contributing
    Contributions are welcome! If you'd like to contribute to the project, please follow these steps
