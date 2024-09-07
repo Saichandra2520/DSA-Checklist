@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         'custom-orange': '#FFD389', // Define a custom color
+        'custom-popup-bg': 'rgba(255, 223, 186, 0.95)',
       },
     },
   },

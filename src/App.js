@@ -8,6 +8,7 @@ import ProgressPage from './Pages/ProgressPage/ProgressPage'; // Import Progress
 import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage'; // Import ProblemsSheetPage component
 import { Routes, Route } from 'react-router-dom'; // Import routing components from react-router-dom
 import { getHeatmapData, initializeHeatmapData } from "./Services/progress"; // Import functions for heatmap data management
+import MobileWarning from './Components/MobileWarning/MobileWarning';
 
 function App() {
   // State to hold the sheets data
@@ -124,6 +125,7 @@ function App() {
 
   return (
     <div className='main' id='DSAsheets'>
+      <MobileWarning />
       <Header /> {/* Render the Header component */}
       <Routes>
         {/* Define routes for different pages */}
