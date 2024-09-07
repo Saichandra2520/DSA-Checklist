@@ -1,6 +1,6 @@
 import React from "react";
-import CircularProgressBar from "../Tools/CircularProgressBar/CircularProgressBar";
 import { useNavigate } from "react-router-dom";
+import CircularProgressBar from "../Tools/CircularProgressBar/CircularProgressBar";
 
 // TopicsCard component to display a card for a specific topic
 const TopicsCard = ({ topic }) => {

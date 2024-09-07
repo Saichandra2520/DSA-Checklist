@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Header from "../../Components/Header/Header";
-import CircularProgressBar from "../../Components/Tools/CircularProgressBar/CircularProgressBar";
-import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
 import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
+import { KeepDarkMode } from "../../Components/DarkMode/DarkModeButton";
+import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
+import CircularProgressBar from "../../Components/Tools/CircularProgressBar/CircularProgressBar";
 
 // HomePage component displaying the user's progress and tasks
 const HomePage = ({ sheets, consistencyPoints, currentStreak }) => {
@@ -28,8 +28,10 @@ const HomePage = ({ sheets, consistencyPoints, currentStreak }) => {
     overrallPercentage(sheets);
   }, [sheets]);
 
+  if(document.body.style.backgroundColor == "black") KeepDarkMode()
+
   return (
-    <div className="w-full">
+    <div className="w-fulls BGtoBlack borderToWhite">
       <div className="px-1 mx-1">
         <div
           className="mt-5"

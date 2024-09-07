@@ -1,12 +1,12 @@
 import React from 'react';
+import coinIcon from '../../assets/Coin.svg';
 import fireIcon from '../../assets/Fire.svg';
-import coinIcon from '../../assets/Coin.svg'
 
 const ConsistencyTracker = ({currentStreak, consistencyPoints}) => {
 
     
   return (
-    <div className='mt-4 box-border w-full h-[185px] p-3 px-4 border border-black rounded-2xl flex flex-col' style={{borderColor: "rgb(0,0,0,0.1)"}} >
+    <div className='mt-4 box-border w-full h-[185px] p-3 px-4 border border-black rounded-2xl flex flex-col borderToWhite' style={{borderColor: "rgb(0,0,0,0.1)"}} >
         <h3 className='font-semibold text-base ' >Consistency Tracker</h3>
         <p className='font-normal text-xs text-slate-600 mt-1' >Track your learning progress and consistency</p>
         <div className='w-full flex mt-3 items-center' >
