@@ -11,82 +11,68 @@ const DarkModeButton = () => {
 export function darkMode (){
 
     if(document.body.style.backgroundColor != "black"){
-        document.body.style.backgroundColor = "black"
-        document.querySelectorAll(".BGtoBlack").forEach(e => {
-            e.classList.remove("bg-white")
-            e.classList.add("bg-black")
-            e.classList.remove("text-black")
-            e.classList.add("text-white")
-        })
-        document.querySelectorAll(".borderToWhite").forEach(e => {
-            e.classList.remove("border-black")
-            e.classList.add("border-white")
-            if(e.style.borderColor = 'rgba(0,0,0,0.1)'){
-                e.style.borderColor = "white"
-            }
-        })
-        document.querySelectorAll(".BGtoWhite").forEach(e => {
-            e.classList.remove("bg-black")
-            e.classList.add("bg-white")
-            e.classList.remove("text-white")
-            e.classList.add("text-black")
-        })
-        document.querySelectorAll(".textToWhite").forEach(e => {
-            e.classList.remove("text-gray-900")
-            e.classList.add("text-white")
-        })
+        KeepDarkMode()
     }
     else{
         document.body.style.backgroundColor = "white"
-        document.querySelectorAll(".BGtoBlack").forEach(e => {
+        document.querySelectorAll(".BGtoFullBlack").forEach(e =>{
             e.classList.remove("bg-black")
             e.classList.add("bg-white")
             e.classList.remove("text-white")
+        })
+        document.querySelectorAll(".BGtoBlack").forEach(e => {
+            e.classList.add("bg-white")
+            e.classList.remove("bg-zinc-950")
             e.classList.add("text-black")
+            e.classList.remove("text-gray-200")
         })
         document.querySelectorAll(".borderToWhite").forEach(e => {
-            e.classList.remove("border-white")
-            e.classList.add("border-Black")
-            if(e.style.borderColor = 'white'){
-                e.style.borderColor = "rgba(0,0,0,0.1)"
+            e.classList.add("border-black")
+            e.classList.remove("border-gray-50")
+            if(e.classList.contains("border-gray-50") == true){
+                e.classList.add("border-slate-800")
             }
         })
         document.querySelectorAll(".BGtoWhite").forEach(e => {
             e.classList.remove("bg-white")
             e.classList.add("bg-black")
-            e.classList.remove("text-black")
+            e.classList.remove("text-gray-950")
             e.classList.add("text-white")
         })
         document.querySelectorAll(".textToWhite").forEach(e => {
             e.classList.remove("text-white")
-            e.classList.add("text-gray-900")
         })
     }
 }
 export function KeepDarkMode(){
-    console.log("dsds")
+
     document.body.style.backgroundColor = "black"
-        document.querySelectorAll(".BGtoBlack").forEach(e => {
+        document.querySelectorAll(".BGtoFullBlack").forEach(e =>{
             e.classList.remove("bg-white")
             e.classList.add("bg-black")
-            e.classList.remove("text-black")
             e.classList.add("text-white")
+        })
+        document.querySelectorAll(".BGtoBlack").forEach(e => {
+            e.classList.remove("bg-white")
+            e.classList.add("bg-gray-900")
+            e.classList.remove("text-black")
+            e.classList.add("text-gray-200")
         })
         document.querySelectorAll(".borderToWhite").forEach(e => {
             e.classList.remove("border-black")
-            e.classList.add("border-white")
+            e.classList.add("border-gray-50")
             if(e.style.borderColor = 'rgba(0,0,0,0.1)'){
-                e.style.borderColor = "white"
+                e.style.borderColor = null
+                e.classList.add("border-gray-50")
             }
         })
         document.querySelectorAll(".BGtoWhite").forEach(e => {
             e.classList.remove("bg-black")
-            e.classList.add("bg-white")
+            e.classList.add("bg-gray-50")
             e.classList.remove("text-white")
-            e.classList.add("text-black")
+            e.classList.add("text-gray-950")
         })
         document.querySelectorAll(".textToWhite").forEach(e => {
-            e.classList.remove("text-gray-900")
             e.classList.add("text-white")
         })
 }

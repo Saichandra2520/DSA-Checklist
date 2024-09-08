@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import TopicsCard from '../TopicsCard/TopicsCard';
 
 const TopicsWrapper = ({topics}) => {

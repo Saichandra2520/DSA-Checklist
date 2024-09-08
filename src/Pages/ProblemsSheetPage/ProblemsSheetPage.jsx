@@ -48,7 +48,7 @@ const ProblemsSheetPage = ({ onChecklistChange, currentStreak, consistencyPoints
                 </div>
                 
                 {/* Circular progress bar to show the percentage of solved questions */}
-                <div className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center ' style={{ borderColor: "rgb(0,0,0,0.1)" }}>
+                <div className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center BGtoBlack borderToWhite' style={{ borderColor: "rgb(0,0,0,0.1)" }}>
                     <div className='flex justify-center items-center flex-col gap-3'>
                         <CircularProgressBar radius={50} percentage={percentage} color={"#D2691E"} progressWidth={9} bgColor={"#FFD389"} />
                         <p className='font-medium text-sm'>{`${topic?.doneQuestions} out of ${topic?.questions.length} Solved`}</p>

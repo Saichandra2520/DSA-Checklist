@@ -124,7 +124,7 @@ function App() {
   }, [reloadTrigger]);
 
   return (
-    <div className='main BGtoBlack' id='DSAsheets'>
+    <div className='main BGtoFullBlack' id='DSAsheets'>
       <MobileWarning />
       <Header /> {/* Render the Header component */}
       <Routes>

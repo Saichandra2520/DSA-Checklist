@@ -34,7 +34,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
   if(document.body.style.backgroundColor == "black") KeepDarkMode()
 
   return (
-    <div className="max-w-5xl m-auto borderToWhite">
+    <div className="max-w-5xl m-auto">
       <div className="flex gap-4 justify-between flex-wrap sm:items-center">
         
         {/* ConsistencyTracker component displays the user's current streak and consistency points */}
@@ -44,7 +44,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
         
         {/* Display the average problems solved in the current month with a bulb icon */}
         <div
-          className="flex flex-col justify-around items-center mt-4 box-border h-[185px] pb-8  px-4 border border-black rounded-2xl borderToWhite"
+          className="flex flex-col justify-around items-center mt-4 box-border h-[185px] pb-8  px-4 border border-black rounded-2xl borderToWhite BGtoBlack"
           style={{ borderColor: "rgb(0,0,0,0.1)" }}
         >
           <h5 className="mt-3 font-semibold text-center">
@@ -59,7 +59,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
         
         {/* SpeedometerProgress component shows the user's progress in terms of problem-solving */}
         <div
-          className="flex justify-around items-center mt-4 box-border h-[185px] p-8  px-4 border border-black rounded-2xl borderToWhite"
+          className="flex justify-around items-center mt-4 box-border h-[185px] p-8  px-4 border border-black rounded-2xl borderToWhite BGtoBlack"
           style={{ borderColor: "rgb(0,0,0,0.1)" }}
         >
           <div className="lc-xl:h-[180px] min-h-[180px] w-full p-4">

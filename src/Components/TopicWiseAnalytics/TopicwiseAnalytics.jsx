@@ -64,7 +64,7 @@ const TopicwiseAnalytics = ({ sheets }) => {
 
   return (
     <div
-      className="w-full px-8 py-4 flex flex-col justify-around mt-4 box-border border border-black rounded-2xl borderToWhite"
+      className="w-full px-8 py-4 flex flex-col justify-around mt-4 box-border border border-black rounded-2xl borderToWhite BGtoBlack"
       style={{ borderColor: "rgb(0,0,0,0.1)" }}
     >
       <div

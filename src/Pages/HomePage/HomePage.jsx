@@ -31,7 +31,7 @@ const HomePage = ({ sheets, consistencyPoints, currentStreak }) => {
   if(document.body.style.backgroundColor == "black") KeepDarkMode()
 
   return (
-    <div className="w-fulls BGtoBlack borderToWhite">
+    <div className="w-fulls">
       <div className="px-1 mx-1">
         <div
           className="mt-5"

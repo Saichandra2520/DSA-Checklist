@@ -35,14 +35,14 @@ const SheetTopics = ({ sheets, reload, currentStreak, consistencyPoints }) => {
   if(document.body.style.backgroundColor == "black") KeepDarkMode()
   
   return (
-    <div className='flex justify-center items-center w-[75vw] flex-wrap m-auto borderToWhite'>
+    <div className='flex justify-center items-center w-[75vw] flex-wrap m-auto borderToWhite textToWhite'>
       <div className='flex gap-3 flex-wrap w-full m-auto justify-around'>
         <div className='flex flex-col justify-center items-center'>
           <h2 className='font-bold text-xl'>{sheet?.sheetName} DSA Sheet</h2>
           <p>Author: {sheet?.author}</p>
         </div>
         <div
-          className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center'
+          className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center borderToWhite BGtoBlack'
           style={{ borderColor: "rgb(0,0,0,0.3)" }}
         >
           <div className='flex justify-center items-center flex-col gap-3'>
@@ -60,7 +60,7 @@ const SheetTopics = ({ sheets, reload, currentStreak, consistencyPoints }) => {
           <ConsistencyTracker currentStreak={currentStreak} consistencyPoints={consistencyPoints} />
         </div>
       </div>
-      <div className='w-full mt-8'>
+      <div className='w-full mt-8 '>
         <TopicsWrapper topics={sheet?.problems} />
       </div>
     </div>

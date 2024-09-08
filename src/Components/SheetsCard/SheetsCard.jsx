@@ -19,7 +19,7 @@ console.log(sheet);
   return (
     <>
       <div>
-        <div className="mb-6 box-border w-[330px] h-[185px] border border-black rounded-2xl flex justify-around borderToWhite">
+        <div className="mb-6 box-border w-[330px] h-[185px] border border-black rounded-2xl flex justify-around borderToWhite BGtoBlack">
           <div className="topic-item-primary">
             <h3 className="font-medium text-lg ml-6 mt-4 ">{sheet.sheetName}</h3>
             <h4 className="font-normal text-sm mt-6 ml-3">
