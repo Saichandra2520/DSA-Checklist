@@ -15,7 +15,6 @@ const SheetsCard = ({sheet}) => {
   const calculatePercentage = (solved, total) =>{
     return Math.floor((solved/total)*100)
   }
-console.log(sheet);
   return (
     <>
       <div>
