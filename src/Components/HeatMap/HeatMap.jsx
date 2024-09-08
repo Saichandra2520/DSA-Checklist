@@ -76,7 +76,7 @@ const Heatmap = ({ totSolvedQuestions }) => {
           <div className="text-xs">
             Max streak: <span className="font-bold">{maxStreak}</span>
           </div>
-          <select className="text-sm border rounded px-2 py-1 BGtoWhite">
+          <select className="text-sm border rounded px-2 py-1 BGtoBlack">
             <option>Current</option>
           </select>
         </div>
