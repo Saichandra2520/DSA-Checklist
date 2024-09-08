@@ -34,7 +34,7 @@ export function darkMode (){
             }
         })
         document.querySelectorAll(".BGtoWhite").forEach(e => {
-            e.classList.remove("bg-white")
+            e.classList.remove("bg-gray-50")
             e.classList.add("bg-black")
             e.classList.remove("text-gray-950")
             e.classList.add("text-white")
@@ -54,7 +54,7 @@ export function KeepDarkMode(){
         })
         document.querySelectorAll(".BGtoBlack").forEach(e => {
             e.classList.remove("bg-white")
-            e.classList.add("bg-gray-900")
+            e.classList.add("bg-zinc-950")
             e.classList.remove("text-black")
             e.classList.add("text-gray-200")
         })
