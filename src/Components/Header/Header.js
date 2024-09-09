@@ -63,7 +63,7 @@ export default function Header() {
 
 
   return (
-    <header className="bg-white border-b border-black-30 h-13 sticky top-0 z-50 w-full BGtoFullBlack definer ">
+    <header className="bg-white border-b border-black-30 h-13 sticky top-0 z-50 w-full BGtoBlack">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 "
