@@ -31,7 +31,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
 
   return (
     <div className="max-w-5xl m-auto">
-      <div className="flex gap-4 justify-between flex-wrap sm:items-center">
+      <div className="flex gap-4 flex-wrap justify-center md:justify-between sm:items-center">
         
         {/* ConsistencyTracker component displays the user's current streak and consistency points */}
         <div>
