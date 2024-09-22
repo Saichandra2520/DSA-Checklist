@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
-import './styles.css'; // Ensure your CSS file is imported
-import { getTopicData, updateDBData } from '../../Services/service'; // Adjust the import path
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getHeatmapData, initializeHeatmapData, updateHeatmapData } from '../../Services/progress';
+import { getTopicData, updateDBData } from '../../Services/service'; // Adjust the import path
+import './styles.css'; // Ensure your CSS file is imported
 
 const TableComponent = ({ onChecklistChange }) => {
   // State to manage sorting order and celebration animation
@@ -173,7 +173,7 @@ const TableComponent = ({ onChecklistChange }) => {
                   </select>
                 </div>
               </div>
-              <table className="min-w-full border-none">
+              <table className="min-w-full border-none ">
                 <thead className="">
                   <tr>
                     <th className="px-2 py-4 text-left">
@@ -185,19 +185,19 @@ const TableComponent = ({ onChecklistChange }) => {
                     ></th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left textToWhite"
                     >
                       Problem Name
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left textToWhite"
                     >
                       Difficulty
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left textToWhite"
                     >
                       Solve
                     </th>
@@ -213,7 +213,7 @@ const TableComponent = ({ onChecklistChange }) => {
                       className={`bg-white border-b hover:bg-gray-50 `}
                       style={{backgroundColor: `${problem?.Done ? '#B9E2A7' : ''}`}}
                     >
-                      <td className="px-2 py-4 whitespace-nowrap text-sm text-center border-none">
+                      <td className="px-2 py-4 whitespace-nowrap text-sm text-center border-none BGtoBlack ">
                         <input
                           type="checkbox"
                           checked={problem?.Done}
@@ -221,16 +221,16 @@ const TableComponent = ({ onChecklistChange }) => {
                           className="custom-checkbox"
                         />
                       </td>
-                      <td className="px-2 py-4 whitespace-nowrap text-sm border-none font-medium text-gray-900">
+                      <td className="px-2 py-4 whitespace-nowrap text-sm border-none font-medium text-gray-900 BGtoBlack textToWhite">
                         {index + 1}
                       </td>
-                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-none">
+                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-none BGtoBlack textToWhite">
                         <a href={problem?.URL} target="_blank">
                           {problem?.Problem}
                         </a>
                       </td>
                       <td
-                        className="text-sm text-gray-900 font-normal px-6 py-4 whitespace-nowrap border-none"
+                        className="text-sm text-gray-900 font-normal px-6 py-4 whitespace-nowrap border-none BGtoBlack textToWhite"
                         style={{
                           color:
                             problem?.difficulty === 'easy'
@@ -243,7 +243,7 @@ const TableComponent = ({ onChecklistChange }) => {
                         {problem?.difficulty[0]?.toUpperCase() +
                           problem?.difficulty?.slice(1)}
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-none">
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-none BGtoBlack textToWhite">
                         <a href={problem?.URL} target="_blank">
                           Link
                         </a>

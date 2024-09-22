@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Dialog,
   DialogPanel,
@@ -11,21 +10,21 @@ import {
   PopoverPanel,
 } from "@headlessui/react";
 import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
   ChevronDownIcon,
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
-import Logo from "../../assets/Logo.svg";
+import {
+  Bars3Icon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  XMarkIcon
+} from "@heroicons/react/24/outline";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo.svg";
+import DarkModeButton from "../DarkMode/DarkModeButton";
 
 const products = [
   {
@@ -62,17 +61,19 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
+
   return (
-    <header className="bg-white border-b border-black-30 h-13 sticky top-0 z-50 w-full">
+    <header className="bg-white border-b border-black-30 h-13 sticky top-0 z-50 w-full BGtoBlack">
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8 "
       >
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img src={Logo} className="w-10" />
           </a>
+          <DarkModeButton/>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -86,7 +87,7 @@ export default function Header() {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative group">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 ">
+            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 textToWhite">
               Checklists
               <ChevronDownIcon
                 aria-hidden="true"
@@ -122,7 +123,7 @@ export default function Header() {
 
           <Link
             to="progress"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 text-gray-900 textToWhite"
           >
             Progress
           </Link>
@@ -183,7 +184,7 @@ export default function Header() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 BGtoBlack">
                     Checklists
                     <ChevronDownIcon
                       aria-hidden="true"

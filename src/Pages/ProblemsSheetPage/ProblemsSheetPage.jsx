@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import ConsistencyTracker from '../../Components/ConsistencyTracker/ConsistencyTracker';
-import CircularProgressBar from '../../Components/Tools/CircularProgressBar/CircularProgressBar';
-import TableComponent from '../../Components/Table/TableComponent';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ConsistencyTracker from '../../Components/ConsistencyTracker/ConsistencyTracker';
+import { KeepDarkMode } from "../../Components/DarkMode/DarkModeButton";
+import TableComponent from '../../Components/Table/TableComponent';
+import CircularProgressBar from '../../Components/Tools/CircularProgressBar/CircularProgressBar';
 import { getTopicData } from '../../Services/service';
 
 const ProblemsSheetPage = ({ onChecklistChange, currentStreak, consistencyPoints }) => {
@@ -34,8 +35,10 @@ const ProblemsSheetPage = ({ onChecklistChange, currentStreak, consistencyPoints
         percentage = topic?.doneQuestions ? Math.floor((topic?.doneQuestions / topic?.questions.length) * 100) : 0;
     }, [sheet]);
 
+    if(document.body.style.backgroundColor == "black") KeepDarkMode()
+
     return (
-        <div className='flex justify-center items-center w-[75vw] flex-wrap mx-auto mb-9' >
+        <div className='flex justify-center items-center w-[75vw] flex-wrap mx-auto mb-9 ' >
             <div className='flex gap-3 flex-wrap w-full m-auto justify-around' >
                 
                 {/* Display the sheet name and topic name */}
@@ -45,7 +48,7 @@ const ProblemsSheetPage = ({ onChecklistChange, currentStreak, consistencyPoints
                 </div>
                 
                 {/* Circular progress bar to show the percentage of solved questions */}
-                <div className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center ' style={{ borderColor: "rgb(0,0,0,0.1)" }}>
+                <div className='border-black border rounded-2xl p-3 px-4 h-[185px] mt-4 flex justify-center BGtoBlack borderToWhite' style={{ borderColor: "rgb(0,0,0,0.1)" }}>
                     <div className='flex justify-center items-center flex-col gap-3'>
                         <CircularProgressBar radius={50} percentage={percentage} color={"#D2691E"} progressWidth={9} bgColor={"#FFD389"} />
                         <p className='font-medium text-sm'>{`${topic?.doneQuestions} out of ${topic?.questions.length} Solved`}</p>

@@ -1,6 +1,6 @@
 import React from "react";
-import CircularProgressBar from "../Tools/CircularProgressBar/CircularProgressBar";
 import { useNavigate } from "react-router-dom";
+import CircularProgressBar from "../Tools/CircularProgressBar/CircularProgressBar";
 
 // TopicsCard component to display a card for a specific topic
 const TopicsCard = ({ topic }) => {
@@ -23,7 +23,7 @@ const TopicsCard = ({ topic }) => {
     <>
       <div>
         <div
-          className="mb-6 box-border w-[330px] h-[185px] border border-black rounded-2xl flex justify-around"
+          className="mb-6 box-border w-[330px] h-[185px] border border-black rounded-2xl flex justify-around borderToWhite BGtoBlack"
           // Container styling for the topic card
         >
           <div className="topic-item-primary">
@@ -40,7 +40,7 @@ const TopicsCard = ({ topic }) => {
             {/* Button to navigate to the topic's problems */}
             <button
               onClick={handleStartNow}
-              className="bg-black text-white text-xs font-semibold py-2 px-6 mt-4 ml-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="bg-black text-white text-xs font-semibold py-2 px-6 mt-4 ml-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 BGtoWhite"
             >
               Solve Now
             </button>

@@ -66,7 +66,7 @@ const Heatmap = ({ totSolvedQuestions }) => {
   }, []); // Empty dependency array means this effect runs once after the initial render
 
   return (
-    <div className="p-4 bg-white mt-4 border border-black rounded-2xl" style={{ borderColor: "rgb(0,0,0,0.1)" }}>
+    <div className="p-4 bg-white mt-4 border border-black rounded-2xl borderToWhite BGtoBlack" style={{ borderColor: "rgb(0,0,0,0.1)" }}>
       <div className="flex justify-between items-center mb-4 flex-wrap">
         <p className="text-xs md:text-sm font-semibold">{totSolvedQuestions} problems completed in the past year</p>
         <div className="flex space-x-4 items-center flex-wrap">
@@ -76,7 +76,7 @@ const Heatmap = ({ totSolvedQuestions }) => {
           <div className="text-xs">
             Max streak: <span className="font-bold">{maxStreak}</span>
           </div>
-          <select className="text-sm border rounded px-2 py-1">
+          <select className="text-sm border rounded px-2 py-1 BGtoBlack">
             <option>Current</option>
           </select>
         </div>

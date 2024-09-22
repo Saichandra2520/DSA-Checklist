@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
 import BulbIcon from "../../assets/Bulb.svg";
+import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
+import { KeepDarkMode } from "../../Components/DarkMode/DarkModeButton";
 import Heatmap from "../../Components/HeatMap/HeatMap";
 import SpeedometerProgress from "../../Components/SpeedoProgress/SpeedoProgress";
 import TopicwiseAnalytics from "../../Components/TopicWiseAnalytics/TopicwiseAnalytics";
+
 
 // The ProgressPage component displays various analytics related to the user's progress
 const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets }) => {
@@ -29,6 +31,8 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
 
   console.log(sheets);
 
+  if(document.body.style.backgroundColor == "black") KeepDarkMode()
+
   return (
     <div className="max-w-5xl m-auto">
       <div className="flex gap-4 flex-wrap justify-center md:justify-between sm:items-center">
@@ -40,7 +44,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
         
         {/* Display the average problems solved in the current month with a bulb icon */}
         <div
-          className="flex flex-col justify-around items-center mt-4 box-border h-[185px] pb-8  px-4 border border-black rounded-2xl"
+          className="flex flex-col justify-around items-center mt-4 box-border h-[185px] pb-8  px-4 border border-black rounded-2xl borderToWhite BGtoBlack"
           style={{ borderColor: "rgb(0,0,0,0.1)" }}
         >
           <h5 className="mt-3 font-semibold text-center">
@@ -55,7 +59,7 @@ const ProgressPage = ({ consistencyPoints, currentStreak, avgProblems, sheets })
         
         {/* SpeedometerProgress component shows the user's progress in terms of problem-solving */}
         <div
-          className="flex justify-around items-center mt-4 box-border h-[185px] p-8  px-4 border border-black rounded-2xl"
+          className="flex justify-around items-center mt-4 box-border h-[185px] p-8  px-4 border border-black rounded-2xl borderToWhite BGtoBlack"
           style={{ borderColor: "rgb(0,0,0,0.1)" }}
         >
           <div className="lc-xl:h-[180px] min-h-[180px] w-full p-4">

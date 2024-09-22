@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import Header from "../../Components/Header/Header";
-import CircularProgressBar from "../../Components/Tools/CircularProgressBar/CircularProgressBar";
-import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
 import ConsistencyTracker from "../../Components/ConsistencyTracker/ConsistencyTracker";
-
+import { KeepDarkMode } from "../../Components/DarkMode/DarkModeButton";
+import SheetsWrapper from "../../Components/SheetsWrapper/SheetsWrapper";
+import CircularProgressBar from "../../Components/Tools/CircularProgressBar/CircularProgressBar";
 // HomePage component displaying the user's progress and tasks
 const HomePage = ({ sheets, consistencyPoints, currentStreak }) => {
   // Function to calculate the overall progress percentage based on solved questions
@@ -28,17 +27,18 @@ const HomePage = ({ sheets, consistencyPoints, currentStreak }) => {
     overrallPercentage(sheets);
   }, [sheets]);
 
+  if(document.body.style.backgroundColor === "True") KeepDarkMode()
   return (
-    <div className="w-full">
+    <div className="w-fulls">
       <div className="px-1 mx-1">
         <div
           className="mt-5"
           style={{ display: "grid", gridTemplateColumns: "3fr 1fr" }}
         >
           {/* Left side: Generalized message and SheetsWrapper component */}
-          <div className="mt-10 px-8 md:px-16">
+          <div className="mt-10 px-8 md:px-16 ">
             <div>
-              <h3 className="font-semibold">
+              <h3 className="font-semibold textToWhite">
                 Welcome to the DSA Sheets Practice Hub!
               </h3>
               <p className="text-sm mt-1">

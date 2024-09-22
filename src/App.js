@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { initializeSheet, getSheetData, getData } from './Services/service'; // Import functions for initializing and fetching sheet data
-import Header from './Components/Header/Header'; // Import Header component
+import { Route, Routes } from 'react-router-dom'; // Import routing components from react-router-dom
 import Footer from './Components/Footer/Footer'; // Import Footer component
-import HomePage from './Pages/HomePage/HomePage'; // Import HomePage component
-import SheetTopics from './Pages/SheetTopics/SheetTopics'; // Import SheetTopics component
-import ProgressPage from './Pages/ProgressPage/ProgressPage'; // Import ProgressPage component
-import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage'; // Import ProblemsSheetPage component
-import { Routes, Route } from 'react-router-dom'; // Import routing components from react-router-dom
-import { getHeatmapData, initializeHeatmapData } from "./Services/progress"; // Import functions for heatmap data management
+import Header from './Components/Header/Header'; // Import Header component
 import MobileWarning from './Components/MobileWarning/MobileWarning';
+import HomePage from './Pages/HomePage/HomePage'; // Import HomePage component
+import ProblemsSheetPage from './Pages/ProblemsSheetPage/ProblemsSheetPage'; // Import ProblemsSheetPage component
+import ProgressPage from './Pages/ProgressPage/ProgressPage'; // Import ProgressPage component
+import SheetTopics from './Pages/SheetTopics/SheetTopics'; // Import SheetTopics component
+import { getHeatmapData, initializeHeatmapData } from "./Services/progress"; // Import functions for heatmap data management
+import { getData } from './Services/service'; // Import functions for initializing and fetching sheet data
 
 function App() {
   // State to hold the sheets data
@@ -124,7 +124,7 @@ function App() {
   }, [reloadTrigger]);
 
   return (
-    <div className='main' id='DSAsheets'>
+    <div className='main textToWhite' id='DSAsheets'>
       <MobileWarning />
       <Header /> {/* Render the Header component */}
       <Routes>
